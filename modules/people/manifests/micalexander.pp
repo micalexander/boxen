@@ -1,7 +1,6 @@
-include people::micalexander::applications
-
 class people::micalexander {
 
+  include people::micalexander::applications
   notify { 'class people::micalexander declared': }
 
   ##################################

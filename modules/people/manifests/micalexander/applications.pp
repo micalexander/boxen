@@ -1,6 +1,8 @@
 class people::micalexander::applications {
   include chrome
   include dropbox
+  include dropzone
+  include hyperdock
   include evernote
   include onepassword
   include kaleidoscope
@@ -9,6 +11,7 @@ class people::micalexander::applications {
   include bartender
   include clean_my_mac2
   include divvy
+  include fantastical
   include firefox
   include imageoptim
   include iterm2::stable
@@ -25,4 +28,5 @@ class people::micalexander::applications {
   include sublime_text_3
   include skitch
   include adobe_creative_cloud
+  include querious
 }

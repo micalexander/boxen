@@ -1,0 +1,16 @@
+#!/bin/sh
+# Make sure deps are available and run a Cardboard command.
+
+set -e
+
+cd $(dirname "$0")/..
+
+SCRIPT=$(basename "$0")
+
+if [ ! -d ".bundle/binstubs" ]; then
+  bundle install --binstubs .bundle/binstubs
+fi
+PATH=".bundle/binstubs:$PATH"
+
+cardboard bootstrap
+exec cardboard "$SCRIPT" "$@"

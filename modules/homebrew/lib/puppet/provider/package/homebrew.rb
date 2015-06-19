@@ -14,11 +14,7 @@ Puppet::Type.type(:package).provide :homebrew, :parent => Puppet::Provider::Pack
   # A list of `ensure` values that aren't explicit versions.
 
   def self.home
-    if boxen_home = Facter.value(:boxen_home)
-      "#{boxen_home}/homebrew"
-    else
-      "/usr/local/homebrew"
-    end
+    Facter.value(:homebrew_root)
   end
 
   def self.cache
@@ -29,7 +25,7 @@ Puppet::Type.type(:package).provide :homebrew, :parent => Puppet::Provider::Pack
     end
   end
 
-  confine  :operatingsystem => :darwin
+  confine :operatingsystem => :darwin
 
   def self.active?(name, version)
     current(name) == version
@@ -181,18 +177,18 @@ Puppet::Type.type(:package).provide :homebrew, :parent => Puppet::Provider::Pack
     Facter.value(:boxen_s3_bucket) || 'boxen-downloads'
   end
 
+  def bottle_url
+    Facter.value(:homebrew_bottle_url)
+  end
+
   def command_opts
     @command_opts ||= {
       :combine            => true,
       :custom_environment => {
-        "HOME"            => "/#{homedir_prefix}/#{default_user}",
-        "PATH"            => "#{self.class.home}/bin:/usr/bin:/usr/sbin:/bin:/sbin",
-        "CFLAGS"          => "-O2",
-        "CPPFLAGS"        => "-O2",
-        "CXXFLAGS"        => "-O2",
-        "BOXEN_S3_HOST"   => "#{s3_host}",
-        "BOXEN_S3_BUCKET" => "#{s3_bucket}",
-        "HOMEBREW_CACHE"  => self.class.cache
+        "HOME"                      => "/#{homedir_prefix}/#{default_user}",
+        "PATH"                      => "#{self.class.home}/bin:/usr/bin:/usr/sbin:/bin:/sbin",
+        "BOXEN_HOMEBREW_BOTTLE_URL" => bottle_url,
+        "HOMEBREW_CACHE"            => self.class.cache,
       },
       :failonfail         => true,
       :uid                => default_user

@@ -3,22 +3,38 @@ require "hooks/bottles"
 require "utils"
 require "net/http"
 require "uri"
+require "base64"
 
 # This monkeypatching sidesteps Homebrew's normal bottle support and uses our,
 # uh, homebrewed S3 binaries. This support is patched in instead of handled in
 # Puppet so that manual installs and indirect dependencies are also supported.
 module BoxenBottles
   def self.file(formula)
-    "#{formula.name}-#{formula.version}.tar.bz2"
+    "#{formula.name}-#{formula.pkg_version}.tar.bz2"
+  end
+
+  # Keep in sync with same-named function in:
+  # https://github.com/boxen/our-boxen/blob/master/script/sync
+  def self.s3_cellar
+    case HOMEBREW_CELLAR.to_s
+    when "/opt/boxen/homebrew/Cellar" then ""
+    when "/usr/local/Cellar" then "default/"
+    else "#{Base64.strict_encode64(HOMEBREW_CELLAR.to_s)}/"
+    end
   end
 
   def self.url(formula)
     os     = MacOS.version
     file   = self.file(formula)
-    host   = ENV['BOXEN_S3_HOST'] || 's3.amazonaws.com'
-    bucket = ENV['BOXEN_S3_BUCKET'] || 'boxen-downloads'
+    path = "/#{s3_cellar}#{os}/#{file}"
 
-    "http://#{host}/#{bucket}/homebrew/#{os}/#{file}"
+    if ENV['BOXEN_HOMEBREW_BOTTLE_URL']
+      ENV['BOXEN_HOMEBREW_BOTTLE_URL'] + path
+    else
+      host   = ENV['BOXEN_S3_HOST'] || 's3.amazonaws.com'
+      bucket = ENV['BOXEN_S3_BUCKET'] || 'boxen-downloads'
+      "https://#{host}/#{bucket}/homebrew" + path
+    end
   end
 
   def self.bottled?(formula)
@@ -49,8 +65,11 @@ module BoxenBottles
     success = system "curl", "--fail", "--progress-bar", "--output", cache_file, url
     raise "Boxen: Failed to download resource \"#{name}\"" unless success
 
-    ohai "Boxen: Pouring #{file}"
-    system "tar", "-xf", cache_file, "-C", HOMEBREW_CELLAR
+    bottle_install_dir = formula.prefix
+    bottle_install_dir.mkpath
+
+    ohai "Boxen: Pouring #{file} to #{bottle_install_dir}"
+    system "tar", "-xf", cache_file, "-C", bottle_install_dir, "--strip-components=2"
 
     true
   end

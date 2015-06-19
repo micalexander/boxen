@@ -6,11 +6,7 @@ Puppet::Type.type(:homebrew_tap).provide :default do
   include Puppet::Util::Execution
 
   def self.home
-    @home ||= if boxen_home = Facter.value(:boxen_home)
-      "#{boxen_home}/homebrew"
-    else
-      "/usr/local/homebrew"
-    end
+    Facter.value(:homebrew_root)
   end
 
   def self.taps_dir
@@ -87,9 +83,6 @@ Puppet::Type.type(:homebrew_tap).provide :default do
       :custom_environment => {
         "HOME"            => "/#{homedir_prefix}/#{default_user}",
         "PATH"            => "#{self.class.home}/bin:/usr/bin:/usr/sbin:/bin:/sbin",
-        "CFLAGS"          => "-O2",
-        "CPPFLAGS"        => "-O2",
-        "CXXFLAGS"        => "-O2",
         "HOMEBREW_ROOT"   => "#{self.class.home}",
       },
       :failonfail         => true,

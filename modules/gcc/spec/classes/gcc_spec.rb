@@ -8,7 +8,7 @@ describe 'gcc' do
       with_ensure('present')
 
     should contain_package('boxen/brews/gcc48').with({
-      :ensure => '4.8.3-boxen1',
+      :ensure => '4.8.3-boxen2',
       :require => 'Homebrew::Tap[homebrew/versions]'
     })
   end

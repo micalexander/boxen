@@ -4,7 +4,7 @@ describe "homebrew::formula" do
   let(:facts) { default_test_facts }
   let(:title) { "clojure" }
 
-  let(:tapdir) { "#{facts[:boxen_home]}/homebrew/Library/Taps/boxen/homebrew-brews" }
+  let(:tapdir) { "#{facts[:homebrew_root]}/Library/Taps/boxen/homebrew-brews" }
 
   context "with source provided" do
     let(:params) do
@@ -14,12 +14,6 @@ describe "homebrew::formula" do
     end
 
     it do
-      should contain_file(tapdir).with({
-        :ensure => "directory",
-        :owner  => "testuser",
-        :group  => "staff"
-      })
-
       should contain_file("#{tapdir}/clojure.rb").with({
         :source => "puppet:///modules/whatever/my_special_formula.rb"
       })
@@ -28,12 +22,6 @@ describe "homebrew::formula" do
 
   context "without source provided" do
     it do
-      should contain_file(tapdir).with({
-        :ensure => "directory",
-        :owner  => "testuser",
-        :group  => "staff"
-      })
-
       should contain_file("#{tapdir}/clojure.rb").with({
         :source => "puppet:///modules/main/brews/clojure.rb"
       })

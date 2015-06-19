@@ -25,7 +25,7 @@ class Gcc48 < Formula
   url 'http://ftpmirror.gnu.org/gcc/gcc-4.8.3/gcc-4.8.3.tar.bz2'
   mirror 'ftp://gcc.gnu.org/pub/gcc/releases/gcc-4.8.3/gcc-4.8.3.tar.bz2'
   sha1 'da0a2b9ec074f2bf624a34f3507f812ebb6e4dce'
-  version '4.8.3-boxen1'
+  version '4.8.3-boxen2'
 
   head 'svn://gcc.gnu.org/svn/gcc/branches/gcc-4_8-branch'
 
@@ -52,13 +52,7 @@ class Gcc48 < Formula
   depends_on 'isl011'
   depends_on 'ecj' if build.include? 'enable-java' or build.include? 'enable-all-languages'
 
-  if MacOS.version < :leopard
-    # The as that comes with Tiger isn't capable of dealing with the
-    # PPC asm that comes in libitm
-    depends_on 'cctools' => :build
-    # GCC 4.8.1 incorrectly determines that _Unwind_GetIPInfo is available on
-    # Tiger, resulting in a failed build
-    # Fixed upstream: http://gcc.gnu.org/bugzilla/show_bug.cgi?id=58710
+  if build.stable? and MacOS.version >= :yosemite
     patch :DATA
   end
 
@@ -110,6 +104,9 @@ class Gcc48 < Formula
       "--enable-stage1-checking",
       "--enable-checking=release",
       "--enable-lto",
+      # Use 'bootstrap-debug' build configuration to force stripping of object
+      # files prior to comparison during bootstrap (broken by Xcode 6.3).
+      "--with-build-config=bootstrap-debug",
       # A no-op unless --HEAD is built because in head warnings will
       # raise errors. But still a good idea to include.
       "--disable-werror",
@@ -199,117 +196,121 @@ class Gcc48 < Formula
 end
 
 __END__
-diff --git a/libbacktrace/backtrace.c b/libbacktrace/backtrace.c
-index 428f53a..a165197 100644
---- a/libbacktrace/backtrace.c
-+++ b/libbacktrace/backtrace.c
-@@ -35,6 +35,14 @@ POSSIBILITY OF SUCH DAMAGE.  */
- #include "unwind.h"
- #include "backtrace.h"
-
-+#ifdef __APPLE__
-+/* On MacOS X, versions older than 10.5 don't export _Unwind_GetIPInfo.  */
-+#undef HAVE_GETIPINFO
-+#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ >= 1050
-+#define HAVE_GETIPINFO 1
-+#endif
-+#endif
-+
- /* The main backtrace_full routine.  */
-
- /* Data passed through _Unwind_Backtrace.  */
-diff --git a/libbacktrace/simple.c b/libbacktrace/simple.c
-index b03f039..9f3a945 100644
---- a/libbacktrace/simple.c
-+++ b/libbacktrace/simple.c
-@@ -35,6 +35,14 @@ POSSIBILITY OF SUCH DAMAGE.  */
- #include "unwind.h"
- #include "backtrace.h"
-
-+#ifdef __APPLE__
-+/* On MacOS X, versions older than 10.5 don't export _Unwind_GetIPInfo.  */
-+#undef HAVE_GETIPINFO
-+#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ >= 1050
-+#define HAVE_GETIPINFO 1
-+#endif
-+#endif
-+
- /* The simple_backtrace routine.  */
-
- /* Data passed through _Unwind_Backtrace.  */
-diff --git a/libgcc/unwind-c.c b/libgcc/unwind-c.c
-index b937d9d..1121dce 100644
---- a/libgcc/unwind-c.c
-+++ b/libgcc/unwind-c.c
-@@ -30,6 +30,14 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
- #define NO_SIZE_OF_ENCODED_VALUE
- #include "unwind-pe.h"
-
-+#ifdef __APPLE__
-+/* On MacOS X, versions older than 10.5 don't export _Unwind_GetIPInfo.  */
-+#undef HAVE_GETIPINFO
-+#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ >= 1050
-+#define HAVE_GETIPINFO 1
-+#endif
-+#endif
-+
- typedef struct
+diff --git a/gcc/config/darwin-c.c b/gcc/config/darwin-c.c
+index 892ba35..7fe4b1f 100644
+--- a/gcc/config/darwin-c.c
++++ b/gcc/config/darwin-c.c
+@@ -571,21 +571,34 @@ find_subframework_header (cpp_reader *pfile, const char *header, cpp_dir **dirp)
+ }
+ 
+ /* Return the value of darwin_macosx_version_min suitable for the
+-   __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ macro,
+-   so '10.4.2' becomes 1040.  The lowest digit is always zero.
++   __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ macro, so '10.4.2'
++   becomes 1040 and '10.10.0' becomes 101000.  The lowest digit is
++   always zero, as is the second lowest for '10.10.x' and above.
+    Print a warning if the version number can't be understood.  */
+ static const char *
+ version_as_macro (void)
  {
-   _Unwind_Ptr Start;
-diff --git a/libgfortran/runtime/backtrace.c b/libgfortran/runtime/backtrace.c
-index 3b58118..9a00066 100644
---- a/libgfortran/runtime/backtrace.c
-+++ b/libgfortran/runtime/backtrace.c
-@@ -40,6 +40,14 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
- #include "unwind.h"
-
-
-+#ifdef __APPLE__
-+/* On MacOS X, versions older than 10.5 don't export _Unwind_GetIPInfo.  */
-+#undef HAVE_GETIPINFO
-+#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ >= 1050
-+#define HAVE_GETIPINFO 1
-+#endif
-+#endif
+-  static char result[] = "1000";
++  static char result[7] = "1000";
++  int minorDigitIdx;
+ 
+   if (strncmp (darwin_macosx_version_min, "10.", 3) != 0)
+     goto fail;
+   if (! ISDIGIT (darwin_macosx_version_min[3]))
+     goto fail;
+-  result[2] = darwin_macosx_version_min[3];
+-  if (darwin_macosx_version_min[4] != '\0'
+-      && darwin_macosx_version_min[4] != '.')
 +
- /* Macros for common sets of capabilities: can we fork and exec, and
-    can we use pipes to communicate with the subprocess.  */
- #define CAN_FORK (defined(HAVE_FORK) && defined(HAVE_EXECVE) \
-diff --git a/libgo/runtime/go-unwind.c b/libgo/runtime/go-unwind.c
-index c669a3c..9e848db 100644
---- a/libgo/runtime/go-unwind.c
-+++ b/libgo/runtime/go-unwind.c
-@@ -18,6 +18,14 @@
- #include "go-defer.h"
- #include "go-panic.h"
-
-+#ifdef __APPLE__
-+/* On MacOS X, versions older than 10.5 don't export _Unwind_GetIPInfo.  */
-+#undef HAVE_GETIPINFO
-+#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ >= 1050
-+#define HAVE_GETIPINFO 1
-+#endif
-+#endif
++  minorDigitIdx = 3;
++  result[2] = darwin_macosx_version_min[minorDigitIdx++];
++  if (ISDIGIT (darwin_macosx_version_min[minorDigitIdx]))
++  {
++    /* Starting with OS X 10.10, the macro ends '00' rather than '0',
++       i.e. 10.10.x becomes 101000 rather than 10100.  */
++    result[3] = darwin_macosx_version_min[minorDigitIdx++];
++    result[4] = '0';
++    result[5] = '0';
++    result[6] = '\0';
++  }
++  if (darwin_macosx_version_min[minorDigitIdx] != '\0'
++      && darwin_macosx_version_min[minorDigitIdx] != '.')
+     goto fail;
+ 
+   return result;
+diff --git a/gcc/config/darwin-driver.c b/gcc/config/darwin-driver.c
+index 8b6ae93..eb478e8 100644
+--- a/gcc/config/darwin-driver.c
++++ b/gcc/config/darwin-driver.c
+@@ -57,8 +57,6 @@ darwin_find_version_from_kernel (char *new_flag)
+   version_p = osversion + 1;
+   if (ISDIGIT (*version_p))
+     major_vers = major_vers * 10 + (*version_p++ - '0');
+-  if (major_vers > 4 + 9)
+-    goto parse_failed;
+   if (*version_p++ != '.')
+     goto parse_failed;
+   version_pend = strchr(version_p, '.');
+diff --git a/gcc/testsuite/gcc.dg/darwin-minversion-1.c b/gcc/testsuite/gcc.dg/darwin-minversion-1.c
+index d8a3243..6221d61 100644
+--- a/gcc/testsuite/gcc.dg/darwin-minversion-1.c
++++ b/gcc/testsuite/gcc.dg/darwin-minversion-1.c
+@@ -2,7 +2,8 @@
+ /* { dg-options "-mmacosx-version-min=10.1" } */
+ /* { dg-do run { target *-*-darwin* } } */
+ 
+-int main(void)
++int
++main ()
+ {
+ #if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ != 1010
+   fail me;
+diff --git a/gcc/testsuite/gcc.dg/darwin-minversion-2.c b/gcc/testsuite/gcc.dg/darwin-minversion-2.c
+index fd4975a..8e18d52 100644
+--- a/gcc/testsuite/gcc.dg/darwin-minversion-2.c
++++ b/gcc/testsuite/gcc.dg/darwin-minversion-2.c
+@@ -2,7 +2,8 @@
+ /* { dg-options "-mmacosx-version-min=10.1 -mmacosx-version-min=10.3" } */
+ /* { dg-do run { target *-*-darwin* } } */
+ 
+-int main(void)
++int
++main ()
+ {
+ #if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ != 1030
+   fail me;
+diff --git a/gcc/testsuite/gcc.dg/darwin-minversion-3.c b/gcc/testsuite/gcc.dg/darwin-minversion-3.c
+index d0c5934..4fcb969 100644
+--- a/gcc/testsuite/gcc.dg/darwin-minversion-3.c
++++ b/gcc/testsuite/gcc.dg/darwin-minversion-3.c
+@@ -2,7 +2,8 @@
+ /* { dg-options "-mmacosx-version-min=10.4.10" } */
+ /* { dg-do compile { target *-*-darwin* } } */
+ 
+-int main(void)
++int
++main ()
+ {
+ #if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ != 1040
+   fail me;
+diff --git a/gcc/testsuite/gcc.dg/darwin-minversion-4.c b/gcc/testsuite/gcc.dg/darwin-minversion-4.c
+new file mode 100644
+index 0000000..1cb42eb
+--- /dev/null
++++ b/gcc/testsuite/gcc.dg/darwin-minversion-4.c
+@@ -0,0 +1,12 @@
++/* Test that major versions greater than 9 work and have the additional 0.  */
++/* { dg-options "-mmacosx-version-min=10.10.0" } */
++/* { dg-do compile { target *-*-darwin* } } */
 +
- /* The code for a Go exception.  */
-
- #ifdef __ARM_EABI_UNWINDER__
-diff --git a/libobjc/exception.c b/libobjc/exception.c
-index 4b05611..8ff70f9 100644
---- a/libobjc/exception.c
-+++ b/libobjc/exception.c
-@@ -31,6 +31,14 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
- #include "unwind-pe.h"
- #include <string.h> /* For memcpy */
-
-+#ifdef __APPLE__
-+/* On MacOS X, versions older than 10.5 don't export _Unwind_GetIPInfo.  */
-+#undef HAVE_GETIPINFO
-+#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ >= 1050
-+#define HAVE_GETIPINFO 1
++int
++main ()
++{
++#if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__ != 101000
++  fail me;
 +#endif
-+#endif
-+
- /* 'is_kind_of_exception_matcher' is our default exception matcher -
-    it determines if the object 'exception' is of class 'catch_class',
-    or of a subclass.  */
++  return 0;
++}

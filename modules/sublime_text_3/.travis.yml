@@ -1,0 +1,10 @@
+---
+script: "./script/cibuild"
+gemfile: "this/does/not/exist"
+rvm:
+  - 1.9.3
+  - 2.1.1
+env:
+  global:
+    # encrypted GITHUB_API_TOKEN for librarian-puppet
+    secure: "J30hxsH4RKrKe/yZG5kunQwAfD5e/q3N4Cy8hAk+eGpAvEKqA3K6K6K6vP4FN+WWc1YnPZWu+hZZSt6rEoSV388soZhM82DjVk0NiwZ7aNWlf9nmDUwJDDzEOYmtD5ORt6bsPj8MsoyuhoTBzLkXo3d+FMj+PQZa3Zo/NkyyXys="

@@ -2,6 +2,16 @@
 
 Below you can find common questions and answers.
 
+### Q: Boxen Keychain Helper: Encountered error code: -25308
+If you run `boxen` in a session without GUI (e.g. via SSH), you will most likely need to unlock the keychain manually.
+
+```
+security create-keychain -p $your_password $keychain_name
+security default-keychain -d user -s $keychain_name
+# if necessary..
+security unlock-keychain -p $your_password # unlocks the default keychain, which boxen will use to store the token
+```
+
 ### Q: How do you uninstall an application and get it to reinstall in the application folder with boxen?
 
 When removing applications make sure to remove the corresponding `/var/db/.puppet_appdmg_installed_application` so that boxen will reinstall it.
@@ -42,7 +52,7 @@ The next step is to update your Puppet modules and RubyGems. First delete Puppet
 
 ```bash
 rm Puppetfile.lock Gemfile.lock
-bundle install --no-deployment --without development
+bundle install --no-deployment --without development --path .bundle
 bundle exec librarian-puppet install --clean
 ```
 
@@ -52,7 +62,7 @@ bundle exec librarian-puppet install --clean
 One approach is to delete the Gemfile.lock and Puppetfile.lock and run:
 
     # Regenerates Gemfile.lock and installs new Gems
-    bundle install --without development
+    bundle install --without development --path .bundle
 
     # Regenerates Puppetfile.lock and caches tarballs
     bundle exec librarian-puppet install --clean
@@ -61,7 +71,7 @@ These will generate the respective lock files suitable for committing. Hope that
 
 ### Q: Should you keep the cache of the module and gem in the repository?
 
-We recommend yout to keep the files inside `vendor/cache` and `vendor/puppet/cache` inside
+We recommend you to keep the files inside `vendor/cache` and `vendor/puppet/cache` inside
 the repository.
 
 It ends up adding a negligible amount of disk space in return for much faster runtimes

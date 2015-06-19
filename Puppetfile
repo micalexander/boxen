@@ -23,13 +23,13 @@ end
 
 # Shortcut for a module under development
 def dev(name, *args)
-  mod name, :path => "#{ENV['HOME']}/src/boxen/puppet-#{name}"
+  mod "puppet-#{name}", :path => "#{ENV['HOME']}/src/boxen/puppet-#{name}"
 end
 
 # Includes many of our custom types and providers, as well as global
 # config. Required.
 
-github "boxen", "3.6.2"
+github "boxen", "3.10.4"
 
 # Support for default hiera data in modules
 
@@ -92,5 +92,3 @@ github "sublime_text_3",        "1.0.3", :repo => "jozefizso/puppet-sublime_text
 github "skitch",                "1.0.3"
 github "adobe_creative_cloud",  "1.0.0", :repo => "ngs/puppet-adobe_creative_cloud"
 github "querious",              "0.0.1", :repo => "micalexander/puppet-querious"
-
-

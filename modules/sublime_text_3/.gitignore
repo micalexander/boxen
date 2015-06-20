@@ -1,8 +1,0 @@
-/.bundle
-/.ruby-version
-/spec/fixtures/.librarian
-/spec/fixtures/.tmp
-/spec/fixtures/Puppetfile.lock
-/spec/fixtures/modules
-!/spec/fixtures/modules/sublime_text_3/
-/spec/fixtures/vendor

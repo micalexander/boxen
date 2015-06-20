@@ -63,7 +63,6 @@ github "xquartz",     "1.2.1"
 
 github "chrome",                "1.1.2"
 github "dropbox",               "1.4.0"
-github "dropzone",              "3.2.0", :repo => "micalexander/puppet-dropzone"
 github "hyperdock",             "1.0.3", :repo => "micalexander/puppet-hyperdock"
 github "evernote",              "2.0.6"
 github "onepassword",           "1.1.2"

@@ -1,0 +1,43 @@
+---
+ruby::version::env:
+  1.8.7-p375:
+    CC: gcc
+
+  1.9.2-p290:
+    CC: gcc
+
+  1.9.2-p320:
+    CC: gcc
+
+ruby::version::alias:
+  1.8.7: 1.8.7-p375
+  1.9.2: 1.9.2-p320
+  1.9.3: 1.9.3-p545
+  1.9.3-p231-tcs-github: 1.9.3-p231-tcs-github-1.0.32
+  2.0.0: 2.0.0-p451
+  2.0.0-github: 2.0.0-github6
+  2.1.0-github: 2.1.0-github1
+  2.1.2-github: 2.1.2-github1
+  2.1.4-github: 2.1.4-github1
+  2.1.5-github: 2.1.5-github1
+  2.1.6-github: 2.1.6-github1
+  2.1-github: 2.1.5-github1
+  jruby: jruby-1.7.6
+  ree: ree-1.8.7-2012.02
+
+ruby::prefix: '/opt'
+ruby::provider: 'rbenv'
+ruby::user: "%{::id}"
+
+ruby::build::ensure: 'v20150413'
+ruby::build::prefix: "%{hiera('ruby::prefix')}/ruby-build"
+ruby::build::user: "%{hiera('ruby::user')}"
+
+ruby::rbenv::ensure: v0.4.0
+ruby::rbenv::prefix: "%{hiera('ruby::prefix')}/rbenv"
+ruby::rbenv::user: "%{hiera('ruby::user')}"
+
+ruby::chruby::ensure: v0.3.8
+ruby::chruby::prefix: "%{hiera('ruby::prefix')}/chruby"
+ruby::chruby::user: "%{hiera('ruby::user')}"
+ruby::chruby::auto_switch: true

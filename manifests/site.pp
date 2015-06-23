@@ -58,7 +58,7 @@ node default {
   include git
   include hub
   include nginx
-
+  
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {
     #fail('Please enable full disk encryption and try again')
@@ -75,6 +75,36 @@ node default {
   ruby::version { '2.1.0': }
   ruby::version { '2.1.1': }
   ruby::version { '2.1.2': }
+
+  # my includes
+  include chrome
+  include dropbox
+  include hyperdock
+  include evernote
+  include onepassword
+  include kaleidoscope
+  include wget
+  include alfred
+  include bartender
+  include clean_my_mac2
+  include divvy
+  include firefox
+  include fantastical
+  include imageoptim
+  include iterm2
+  include silverlight
+  include opera
+  include spotify
+  include steam
+  include teamviewer
+  include transmit
+  include virtualbox
+  include xscope
+  include xtrafinder
+  include caffeine
+  include prefpane
+  include skitch
+  include querious
 
   # common, useful packages
   package {

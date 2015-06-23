@@ -3,9 +3,11 @@
 # Examples
 #
 #   include evernote
-class evernote {
+class evernote (
+  $sourceUri = 'https://evernote.com/download/get.php?file=EvernoteMac&boxen=/evernote_latest.dmg',
+) {
   package { 'evernote':
     provider => 'appdmg_eula',
-    source   => 'http://cdn1.evernote.com/mac/release/Evernote_402628.dmg'
+    source   => $sourceUri,
   }
 }

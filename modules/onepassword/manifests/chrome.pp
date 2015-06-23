@@ -12,7 +12,7 @@ class onepassword::chrome {
     ensure  => directory,
     path    => $chrome_dir,
     mode    => '0755',
-    require => [Package['Chrome'],Package['1Password 4']];
+    require => [Package['Chrome'],Package['1Password 5']];
   }
 
   file { 'onepassword_chrome_extension':
@@ -20,7 +20,7 @@ class onepassword::chrome {
     path    => "${chrome_dir}/gkndfifopckmhdkohjeoljlbfnjhekfg.json",
     source  => 'puppet:///modules/onepassword/chrome.json',
     mode    => '0644',
-    require => [Package['Chrome'],Package['1Password 4'],File['chrome_extensions_dir']];
+    require => [Package['Chrome'],Package['1Password 5'],File['chrome_extensions_dir']];
   }
 
 }

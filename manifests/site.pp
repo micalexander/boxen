@@ -91,7 +91,7 @@ node default {
   include firefox
   include fantastical
   include imageoptim
-  include iterm2
+  include iterm2::stable
   include silverlight
   include opera
   include spotify

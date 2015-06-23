@@ -58,6 +58,7 @@ node default {
   include git
   include hub
   include nginx
+  include wget
   
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {
@@ -83,7 +84,6 @@ node default {
   include evernote
   include onepassword
   include kaleidoscope
-  include wget
   include alfred
   include bartender
   include clean_my_mac2
@@ -102,9 +102,8 @@ node default {
   include xscope
   include xtrafinder
   include caffeine
-  include prefpane
-  include skitch
   include querious
+  include hazel
 
   # common, useful packages
   package {

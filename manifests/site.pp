@@ -86,7 +86,6 @@ node default {
   include kaleidoscope
   include alfred
   include bartender
-  include clean_my_mac2
   include divvy
   include firefox
   include fantastical

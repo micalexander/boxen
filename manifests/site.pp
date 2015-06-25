@@ -59,7 +59,7 @@ node default {
   include hub
   include nginx
   include wget
-  
+
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {
     #fail('Please enable full disk encryption and try again')
@@ -78,31 +78,37 @@ node default {
   ruby::version { '2.1.2': }
 
   # my includes
-  include chrome
-  include dropbox
-  include hyperdock
-  include evernote
-  include onepassword
-  include kaleidoscope
   include alfred
   include bartender
+  include caffeine
+  include chrome
   include divvy
+  include dotfiles
+  include dropbox
+  include evernote
   include firefox
-  include fantastical
   include imageoptim
   include iterm2::stable
-  include silverlight
+  include kaleidoscope
+  include onepassword
   include opera
+  include querious
+  include silverlight
   include spotify
   include steam
   include teamviewer
+  include toggl
   include transmit
   include virtualbox
   include xscope
   include xtrafinder
-  include caffeine
-  include querious
-  include hazel
+
+  prefpane { 'Hazel':
+    source => 'https://s3.amazonaws.com/Noodlesoft/Hazel-3.3.5.dmg',
+  }
+  # prefpane { 'HyperDock':
+  #   source => 'https://bahoom.com/hyperdock/HyperDock.dmg',
+  # }
 
   # common, useful packages
   package {
@@ -113,7 +119,7 @@ node default {
     ]:
   }
 
-  file { "${boxen::config::srcdir}/our-boxen":
+  file { "${boxen::config::srcdir}/boxen":
     ensure => link,
     target => $boxen::config::repodir
   }

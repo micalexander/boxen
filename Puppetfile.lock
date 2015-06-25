@@ -164,6 +164,11 @@ GITHUBTARBALL
     teamviewer (1.0.1)
 
 GITHUBTARBALL
+  remote: boxen/puppet-toggl
+  specs:
+    toggl (1.0.7)
+
+GITHUBTARBALL
   remote: boxen/puppet-transmit
   specs:
     transmit (1.0.2)
@@ -194,24 +199,9 @@ GITHUBTARBALL
     xtrafinder (1.0.1)
 
 GITHUBTARBALL
-  remote: cmckendry/puppet-hyperdock
-  specs:
-    hyperdock (1.0.0)
-
-GITHUBTARBALL
-  remote: demonbane/puppet-fantastical
-  specs:
-    fantastical (0.0.3)
-
-GITHUBTARBALL
   remote: erichkist/puppet-bartender
   specs:
     bartender (1.0.0)
-
-GITHUBTARBALL
-  remote: fromonesrc/puppet-hazel
-  specs:
-    hazel (0.0.3)
 
 GITHUBTARBALL
   remote: indirect/puppet-prefpane
@@ -219,9 +209,19 @@ GITHUBTARBALL
     prefpane (1.2.0)
 
 GITHUBTARBALL
+  remote: jamieconnolly/puppet-dotfiles
+  specs:
+    dotfiles (1.0.0)
+
+GITHUBTARBALL
   remote: jozefizso/puppet-sublime_text_3
   specs:
     sublime_text_3 (1.0.3)
+
+GITHUBTARBALL
+  remote: micalexander/puppet-hazel
+  specs:
+    hazel (0.0.5)
 
 GITHUBTARBALL
   remote: micalexander/puppet-querious
@@ -253,11 +253,6 @@ GITHUBTARBALL
   specs:
     module_data (0.0.3)
 
-GITHUBTARBALL
-  remote: steinim/puppet-clean_my_mac2
-  specs:
-    clean_my_mac2 (0.0.2)
-
 DEPENDENCIES
   adobe_creative_cloud (= 1.0.0)
   alfred (= 1.5.0)
@@ -266,21 +261,19 @@ DEPENDENCIES
   brewcask (= 0.0.6)
   caffeine (= 1.0.0)
   chrome (= 1.2.0)
-  clean_my_mac2 (= 0.0.2)
   divvy (= 1.0.1)
   dnsmasq (= 2.0.1)
+  dotfiles (= 1.0.0)
   dropbox (= 1.4.1)
   evernote (= 2.0.7)
-  fantastical (= 0.0.3)
   firefox (= 1.2.3)
   foreman (= 1.2.0)
   gcc (= 2.2.1)
   git (= 2.7.92)
   go (= 2.1.0)
-  hazel (= 0.0.3)
+  hazel (= 0.0.5)
   homebrew (= 1.12.0)
   hub (= 1.4.1)
-  hyperdock (= 1.0.0)
   imageoptim (= 0.0.2)
   inifile (= 1.1.1)
   iterm2 (= 1.2.5)
@@ -305,6 +298,7 @@ DEPENDENCIES
   sublime_text_3 (= 1.0.3)
   sudo (= 1.0.0)
   teamviewer (= 1.0.1)
+  toggl (= 1.0.7)
   transmit (= 1.0.2)
   virtualbox (= 1.0.13)
   wget (= 1.0.1)

@@ -94,6 +94,7 @@ node default {
   include onepassword
   include opera
   include querious
+  include screenflow
   include silverlight
   include spotify
   include steam
@@ -126,6 +127,9 @@ node default {
 
   git::config::global { 'alias.br':
     value  => 'branch'
+  }
+  git::config::global { 'alias.logg':
+    value  => "log --graph --pretty=format:'%C(yellow)%h%Creset%C(bold red)%d%Creset %s %C(green)(%ad) %C(white)<%an>%Creset' --abbrev-commit --date=local"
   }
 
   # common, useful packages

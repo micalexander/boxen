@@ -29,7 +29,7 @@ end
 # Includes many of our custom types and providers, as well as global
 # config. Required.
 
-github "boxen", "3.10.4"
+github "boxen", "3.11.0"
 
 # Support for default hiera data in modules
 
@@ -73,7 +73,6 @@ github "dotfiles",              "1.0.0", :repo => "jamieconnolly/puppet-dotfiles
 github "dropbox",               "1.4.1"
 github "evernote",              "2.0.7"
 github "firefox",               "1.2.3"
-github "hazel",                 "0.0.5", :repo => "micalexander/puppet-hazel"
 github "imageoptim",            "0.0.2"
 github "iterm2",                "1.2.5"
 github "kaleidoscope",          "1.0.5", :repo => "ngs/puppet-kaleidoscope"
@@ -81,6 +80,7 @@ github "onepassword",           "1.1.5"
 github "opera",                 "0.3.3"
 github "prefpane",              "1.2.0", :repo => "indirect/puppet-prefpane"
 github "querious",              "0.0.1", :repo => "micalexander/puppet-querious"
+github "screenflow",            "1.0.0", :repo => "redguava/puppet-screenflow"
 github "silverlight",           "1.0.1"
 github "skitch",                "1.0.3"
 github "spotify",               "1.0.2"

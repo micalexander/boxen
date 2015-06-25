@@ -6,7 +6,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
-    boxen (3.10.4)
+    boxen (3.11.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-brewcask
@@ -224,11 +224,6 @@ GITHUBTARBALL
     sublime_text_3 (1.0.3)
 
 GITHUBTARBALL
-  remote: micalexander/puppet-hazel
-  specs:
-    hazel (0.0.5)
-
-GITHUBTARBALL
   remote: micalexander/puppet-querious
   specs:
     querious (0.0.1)
@@ -254,6 +249,11 @@ GITHUBTARBALL
     stdlib (4.2.1)
 
 GITHUBTARBALL
+  remote: redguava/puppet-screenflow
+  specs:
+    screenflow (1.0.0)
+
+GITHUBTARBALL
   remote: ripienaar/puppet-module-data
   specs:
     module_data (0.0.3)
@@ -262,7 +262,7 @@ DEPENDENCIES
   adobe_creative_cloud (= 1.0.0)
   alfred (= 1.5.0)
   bartender (= 1.0.0)
-  boxen (= 3.10.4)
+  boxen (= 3.11.0)
   brewcask (= 0.0.6)
   caffeine (= 1.0.0)
   chrome (= 1.2.0)
@@ -277,7 +277,6 @@ DEPENDENCIES
   gcc (= 2.2.1)
   git (= 2.7.92)
   go (= 2.1.0)
-  hazel (= 0.0.5)
   homebrew (= 1.12.0)
   hub (= 1.4.1)
   imageoptim (= 0.0.2)
@@ -296,6 +295,7 @@ DEPENDENCIES
   querious (= 0.0.1)
   repository (= 2.4.1)
   ruby (= 8.5.2)
+  screenflow (= 1.0.0)
   silverlight (= 1.0.1)
   skitch (= 1.0.3)
   spotify (= 1.0.2)

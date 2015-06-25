@@ -24,6 +24,11 @@ GITHUBTARBALL
     chrome (1.2.0)
 
 GITHUBTARBALL
+  remote: boxen/puppet-dash
+  specs:
+    dash (1.0.0)
+
+GITHUBTARBALL
   remote: boxen/puppet-divvy
   specs:
     divvy (1.0.1)
@@ -261,6 +266,7 @@ DEPENDENCIES
   brewcask (= 0.0.6)
   caffeine (= 1.0.0)
   chrome (= 1.2.0)
+  dash (= 1.0.0)
   divvy (= 1.0.1)
   dnsmasq (= 2.0.1)
   dotfiles (= 1.0.0)

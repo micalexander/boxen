@@ -82,6 +82,7 @@ node default {
   include bartender
   include caffeine
   include chrome
+  include dash
   include divvy
   include dotfiles
   include dropbox
@@ -106,9 +107,26 @@ node default {
   prefpane { 'Hazel':
     source => 'https://s3.amazonaws.com/Noodlesoft/Hazel-3.3.5.dmg',
   }
-  # prefpane { 'HyperDock':
-  #   source => 'https://bahoom.com/hyperdock/HyperDock.dmg',
-  # }
+
+  git::config::global { 'user.email':
+    value  => 'micalexander@hotmail.com'
+  }
+
+  git::config::global { 'user.name':
+    value  => 'micalexander'
+  }
+
+  git::config::global { 'alias.st':
+    value  => 'status'
+  }
+
+  git::config::global { 'alias.co':
+    value  => 'checkout'
+  }
+
+  git::config::global { 'alias.br':
+    value  => 'branch'
+  }
 
   # common, useful packages
   package {

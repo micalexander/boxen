@@ -1,3 +1,0 @@
-ruby::version::env:
-  2.2.0:
-    FROM_HIERA: 'true'

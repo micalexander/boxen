@@ -1,3 +1,5 @@
+boxen_user: micalexander
+
 dotfiles::symlinks:
   - bash_profile
   - git-prompt.sh

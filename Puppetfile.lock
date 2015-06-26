@@ -119,6 +119,11 @@ GITHUBTARBALL
     opera (0.3.3)
 
 GITHUBTARBALL
+  remote: boxen/puppet-osx
+  specs:
+    osx (2.8.0)
+
+GITHUBTARBALL
   remote: boxen/puppet-phantomjs
   specs:
     phantomjs (2.4.0)
@@ -289,6 +294,7 @@ DEPENDENCIES
   onepassword (= 1.1.5)
   openssl (= 1.0.0)
   opera (= 0.3.3)
+  osx (>= 0)
   phantomjs (= 2.4.0)
   pkgconfig (= 1.0.0)
   prefpane (= 1.2.0)

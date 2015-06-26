@@ -21,19 +21,3 @@
 
 # See https://github.com/boxen/puppet-java for docs
 # java::update_version: 51
-
-# dotfiles::dir:      "${boxen::config::srcdir}/dotfiles"
-# dotfiles::source:   "${::github_login}/dotfiles"
-
-# Configure some defaults for your dotfile repository
-# dotfiles::prefix:   "."
-# dotfiles::suffix:   ".symlink"
-
-# Use an array to create symlinks using the default variables
-
-# Use a hash to be more explicit with individual symlinks (will use defaults too)
-# dotfiles::symlinks:
-#   zshrc:
-#     prefix: zsh/
-#     suffix: .symlink
-

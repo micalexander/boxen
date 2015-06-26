@@ -23,9 +23,8 @@ boxen::personal::includes:
   - osx::universal_access::enable_scrollwheel_zoom
 
   - dotfiles
-  - sublime_text_3
 
-boxen::personal::osx_apps:
+boxen::personal::cask:
   - 1password
   - alfred
   - bartender
@@ -36,6 +35,8 @@ boxen::personal::osx_apps:
   - dropbox
   - evernote
   - firefox
+  - hazel
+  - hyperdock
   - imageoptim
   - iterm2
   - kaleidoscope
@@ -46,6 +47,7 @@ boxen::personal::osx_apps:
   - sonos
   - spotify
   - steam
+  - sublime_text
   - teamviewer
   - toggldesktop
   - transmit

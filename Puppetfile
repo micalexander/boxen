@@ -39,7 +39,6 @@ github "module_data", "0.0.3", :repo => "ripienaar/puppet-module-data"
 # some/most of these if you want, but it's not recommended.
 
 github "brewcask",    "0.0.6"
-github "dash",        "1.0.0"
 github "dnsmasq",     "2.0.1"
 github "foreman",     "1.2.0"
 github "gcc",         "2.2.1"
@@ -64,4 +63,4 @@ github "xquartz",     "1.2.1"
 
 github "dotfiles",              "1.0.0", :repo => "jamieconnolly/puppet-dotfiles"
 github "osx"
-github "sublime_text_3",        "1.0.3", :repo => "jozefizso/puppet-sublime_text_3"
+github "sublime_text"

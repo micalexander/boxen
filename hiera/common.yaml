@@ -30,10 +30,6 @@
 # dotfiles::suffix:   ".symlink"
 
 # Use an array to create symlinks using the default variables
-dotfiles::symlinks:
-  - bash_profile
-  - git-prompt.sh
-  - git-completion.sh
 
 # Use a hash to be more explicit with individual symlinks (will use defaults too)
 # dotfiles::symlinks:

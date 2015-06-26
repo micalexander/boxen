@@ -77,61 +77,6 @@ node default {
   ruby::version { '2.1.1': }
   ruby::version { '2.1.2': }
 
-  # my includes
-  include alfred
-  include bartender
-  include caffeine
-  include chrome
-  include dash
-  include divvy
-  include dotfiles
-  include dropbox
-  include evernote
-  include firefox
-  include imageoptim
-  include iterm2::stable
-  include kaleidoscope
-  include onepassword
-  include opera
-  include querious
-  include screenflow
-  include silverlight
-  include spotify
-  include steam
-  include teamviewer
-  include toggl
-  include transmit
-  include virtualbox
-  include xscope
-  include xtrafinder
-
-  prefpane { 'Hazel':
-    source => 'https://s3.amazonaws.com/Noodlesoft/Hazel-3.3.5.dmg',
-  }
-
-  git::config::global { 'user.email':
-    value  => 'micalexander@hotmail.com'
-  }
-
-  git::config::global { 'user.name':
-    value  => 'micalexander'
-  }
-
-  git::config::global { 'alias.st':
-    value  => 'status'
-  }
-
-  git::config::global { 'alias.co':
-    value  => 'checkout'
-  }
-
-  git::config::global { 'alias.br':
-    value  => 'branch'
-  }
-  git::config::global { 'alias.logg':
-    value  => "log --graph --pretty=format:'%C(yellow)%h%Creset%C(bold red)%d%Creset %s %C(green)(%ad) %C(white)<%an>%Creset' --abbrev-commit --date=local"
-  }
-
   # common, useful packages
   package {
     [

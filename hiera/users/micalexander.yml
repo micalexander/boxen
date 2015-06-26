@@ -1,0 +1,46 @@
+dotfiles::symlinks:
+  - bash_profile
+  - git-prompt.sh
+  - git-completion.sh
+
+boxen::personal::homebrew_packages:
+  - htop
+
+boxen::personal::includes:
+  - osx::finder::empty_trash_securely
+  - osx::finder::unhide_library
+  - osx::global::key_repeat_rate
+  - osx::no_network_dsstores
+  - osx::software_update
+  - osx::dock::icon_size
+  - osx::global::tap_to_click
+  - osx::universal_access::ctrl_mod_zoom
+  - osx::universal_access::enable_scrollwheel_zoom
+
+boxen::personal::osx_apps:
+  - alfred
+  - bartender
+  - caffeine
+  - chrome
+  - dash
+  - divvy
+  - dotfiles
+  - dropbox
+  - evernote
+  - firefox
+  - imageoptim
+  - iterm2::stable
+  - kaleidoscope
+  - onepassword
+  - opera
+  - querious
+  - screenflow
+  - silverlight
+  - spotify
+  - steam
+  - teamviewer
+  - toggl
+  - transmit
+  - virtualbox
+  - xscope
+  - xtrafinder

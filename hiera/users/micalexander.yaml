@@ -1,9 +1,12 @@
 ---
 
 dotfiles::symlinks:
-  - bash_profile
-  - git-prompt.sh
-  - git-completion.sh
+  bash_profile:
+    prefix: bash/
+  git-prompt.sh:
+    prefix: git/
+  git-completion.sh:
+    prefix: git/
 
 boxen::personal::homebrew_packages:
   - htop
@@ -19,21 +22,23 @@ boxen::personal::includes:
   - osx::universal_access::ctrl_mod_zoom
   - osx::universal_access::enable_scrollwheel_zoom
 
+  - dotfiles
+  - sublime_text_3
+
 boxen::personal::osx_apps:
+  - 1password
   - alfred
   - bartender
   - caffeine
-  - chrome
+  - google-chrome
   - dash
   - divvy
-  - dotfiles
   - dropbox
   - evernote
   - firefox
   - imageoptim
-  - iterm2::stable
+  - iterm2
   - kaleidoscope
-  - onepassword
   - opera
   - querious
   - screenflow
@@ -42,8 +47,19 @@ boxen::personal::osx_apps:
   - spotify
   - steam
   - teamviewer
-  - toggl
+  - toggldesktop
   - transmit
   - virtualbox
   - xscope
   - xtrafinder
+
+  - qlcolorcode
+  - qlstephen
+  - qlmarkdown
+  - quicklook-json
+  - qlprettypatch
+  - quicklook-csv
+  - betterzipql
+  - qlimagesize
+  - webpquicklook
+  - suspicious-package

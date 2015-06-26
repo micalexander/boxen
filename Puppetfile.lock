@@ -1,9 +1,4 @@
 GITHUBTARBALL
-  remote: boxen/puppet-alfred
-  specs:
-    alfred (1.5.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-boxen
   specs:
     boxen (3.11.0)
@@ -14,44 +9,14 @@ GITHUBTARBALL
     brewcask (0.0.6)
 
 GITHUBTARBALL
-  remote: boxen/puppet-caffeine
-  specs:
-    caffeine (1.0.0)
-
-GITHUBTARBALL
-  remote: boxen/puppet-chrome
-  specs:
-    chrome (1.2.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-dash
   specs:
     dash (1.0.0)
 
 GITHUBTARBALL
-  remote: boxen/puppet-divvy
-  specs:
-    divvy (1.0.1)
-
-GITHUBTARBALL
   remote: boxen/puppet-dnsmasq
   specs:
     dnsmasq (2.0.1)
-
-GITHUBTARBALL
-  remote: boxen/puppet-dropbox
-  specs:
-    dropbox (1.4.1)
-
-GITHUBTARBALL
-  remote: boxen/puppet-evernote
-  specs:
-    evernote (2.0.7)
-
-GITHUBTARBALL
-  remote: boxen/puppet-firefox
-  specs:
-    firefox (1.2.3)
 
 GITHUBTARBALL
   remote: boxen/puppet-foreman
@@ -84,16 +49,6 @@ GITHUBTARBALL
     hub (1.4.1)
 
 GITHUBTARBALL
-  remote: boxen/puppet-imageoptim
-  specs:
-    imageoptim (0.0.2)
-
-GITHUBTARBALL
-  remote: boxen/puppet-iterm2
-  specs:
-    iterm2 (1.2.5)
-
-GITHUBTARBALL
   remote: boxen/puppet-nginx
   specs:
     nginx (1.4.5)
@@ -104,19 +59,9 @@ GITHUBTARBALL
     nodejs (4.0.1)
 
 GITHUBTARBALL
-  remote: boxen/puppet-onepassword
-  specs:
-    onepassword (1.1.5)
-
-GITHUBTARBALL
   remote: boxen/puppet-openssl
   specs:
     openssl (1.0.0)
-
-GITHUBTARBALL
-  remote: boxen/puppet-opera
-  specs:
-    opera (0.3.3)
 
 GITHUBTARBALL
   remote: boxen/puppet-osx
@@ -144,84 +89,14 @@ GITHUBTARBALL
     ruby (8.5.2)
 
 GITHUBTARBALL
-  remote: boxen/puppet-silverlight
-  specs:
-    silverlight (1.0.1)
-
-GITHUBTARBALL
-  remote: boxen/puppet-skitch
-  specs:
-    skitch (1.0.3)
-
-GITHUBTARBALL
-  remote: boxen/puppet-sonos
-  specs:
-    sonos (1.0.4)
-
-GITHUBTARBALL
-  remote: boxen/puppet-spotify
-  specs:
-    spotify (1.0.2)
-
-GITHUBTARBALL
-  remote: boxen/puppet-steam
-  specs:
-    steam (1.0.1)
-
-GITHUBTARBALL
   remote: boxen/puppet-sudo
   specs:
     sudo (1.0.0)
 
 GITHUBTARBALL
-  remote: boxen/puppet-teamviewer
-  specs:
-    teamviewer (1.0.1)
-
-GITHUBTARBALL
-  remote: boxen/puppet-toggl
-  specs:
-    toggl (1.0.7)
-
-GITHUBTARBALL
-  remote: boxen/puppet-transmit
-  specs:
-    transmit (1.0.2)
-
-GITHUBTARBALL
-  remote: boxen/puppet-virtualbox
-  specs:
-    virtualbox (1.0.13)
-
-GITHUBTARBALL
-  remote: boxen/puppet-wget
-  specs:
-    wget (1.0.1)
-
-GITHUBTARBALL
   remote: boxen/puppet-xquartz
   specs:
     xquartz (1.2.1)
-
-GITHUBTARBALL
-  remote: boxen/puppet-xscope
-  specs:
-    xscope (1.0.0)
-
-GITHUBTARBALL
-  remote: boxen/puppet-xtrafinder
-  specs:
-    xtrafinder (1.0.1)
-
-GITHUBTARBALL
-  remote: erichkist/puppet-bartender
-  specs:
-    bartender (1.0.0)
-
-GITHUBTARBALL
-  remote: indirect/puppet-prefpane
-  specs:
-    prefpane (1.2.0)
 
 GITHUBTARBALL
   remote: jamieconnolly/puppet-dotfiles
@@ -234,21 +109,6 @@ GITHUBTARBALL
     sublime_text_3 (1.0.3)
 
 GITHUBTARBALL
-  remote: micalexander/puppet-querious
-  specs:
-    querious (0.0.1)
-
-GITHUBTARBALL
-  remote: ngs/puppet-adobe_creative_cloud
-  specs:
-    adobe_creative_cloud (1.0.0)
-
-GITHUBTARBALL
-  remote: ngs/puppet-kaleidoscope
-  specs:
-    kaleidoscope (1.0.5)
-
-GITHUBTARBALL
   remote: puppetlabs/puppetlabs-inifile
   specs:
     inifile (1.1.1)
@@ -259,68 +119,34 @@ GITHUBTARBALL
     stdlib (4.2.1)
 
 GITHUBTARBALL
-  remote: redguava/puppet-screenflow
-  specs:
-    screenflow (1.0.0)
-
-GITHUBTARBALL
   remote: ripienaar/puppet-module-data
   specs:
     module_data (0.0.3)
 
 DEPENDENCIES
-  adobe_creative_cloud (= 1.0.0)
-  alfred (= 1.5.0)
-  bartender (= 1.0.0)
   boxen (= 3.11.0)
   brewcask (= 0.0.6)
-  caffeine (= 1.0.0)
-  chrome (= 1.2.0)
   dash (= 1.0.0)
-  divvy (= 1.0.1)
   dnsmasq (= 2.0.1)
   dotfiles (= 1.0.0)
-  dropbox (= 1.4.1)
-  evernote (= 2.0.7)
-  firefox (= 1.2.3)
   foreman (= 1.2.0)
   gcc (= 2.2.1)
   git (= 2.7.92)
   go (= 2.1.0)
   homebrew (= 1.12.0)
   hub (= 1.4.1)
-  imageoptim (= 0.0.2)
   inifile (= 1.1.1)
-  iterm2 (= 1.2.5)
-  kaleidoscope (= 1.0.5)
   module_data (= 0.0.3)
   nginx (= 1.4.5)
   nodejs (= 4.0.1)
-  onepassword (= 1.1.5)
   openssl (= 1.0.0)
-  opera (= 0.3.3)
-  osx (= 2.8.0)
+  osx (>= 0)
   phantomjs (= 2.4.0)
   pkgconfig (= 1.0.0)
-  prefpane (= 1.2.0)
-  querious (= 0.0.1)
   repository (= 2.4.1)
   ruby (= 8.5.2)
-  screenflow (= 1.0.0)
-  silverlight (= 1.0.1)
-  skitch (= 1.0.3)
-  sonos (= 1.0.4)
-  spotify (= 1.0.2)
   stdlib (= 4.2.1)
-  steam (= 1.0.1)
   sublime_text_3 (= 1.0.3)
   sudo (= 1.0.0)
-  teamviewer (= 1.0.1)
-  toggl (= 1.0.7)
-  transmit (= 1.0.2)
-  virtualbox (= 1.0.13)
-  wget (= 1.0.1)
   xquartz (= 1.2.1)
-  xscope (= 1.0.0)
-  xtrafinder (= 1.0.1)
 

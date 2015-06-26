@@ -154,6 +154,11 @@ GITHUBTARBALL
     skitch (1.0.3)
 
 GITHUBTARBALL
+  remote: boxen/puppet-sonos
+  specs:
+    sonos (1.0.4)
+
+GITHUBTARBALL
   remote: boxen/puppet-spotify
   specs:
     spotify (1.0.2)
@@ -294,7 +299,7 @@ DEPENDENCIES
   onepassword (= 1.1.5)
   openssl (= 1.0.0)
   opera (= 0.3.3)
-  osx (>= 0)
+  osx (= 2.8.0)
   phantomjs (= 2.4.0)
   pkgconfig (= 1.0.0)
   prefpane (= 1.2.0)
@@ -304,6 +309,7 @@ DEPENDENCIES
   screenflow (= 1.0.0)
   silverlight (= 1.0.1)
   skitch (= 1.0.3)
+  sonos (= 1.0.4)
   spotify (= 1.0.2)
   stdlib (= 4.2.1)
   steam (= 1.0.1)

@@ -5,8 +5,7 @@ require gcc
 Exec {
   group       => 'staff',
   logoutput   => on_failure,
-  user        => '$boxen_user',
-
+  user        => $::boxen_user,
 
   path => [
     "${boxen::config::home}/rbenv/shims",
@@ -27,7 +26,7 @@ Exec {
 
 File {
   group => 'staff',
-  owner => $boxen_user
+  owner => $::boxen_user
 }
 
 Package {
@@ -58,7 +57,7 @@ node default {
   include git
   include hub
   include nginx
-  include wget
+
 
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {

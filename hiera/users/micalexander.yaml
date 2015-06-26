@@ -1,4 +1,4 @@
-boxen_user: micalexander
+---
 
 dotfiles::symlinks:
   - bash_profile
@@ -38,6 +38,7 @@ boxen::personal::osx_apps:
   - querious
   - screenflow
   - silverlight
+  - sonos
   - spotify
   - steam
   - teamviewer

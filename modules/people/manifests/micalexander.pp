@@ -14,21 +14,16 @@ class people::micalexander {
 
   php::fpm { '5.5.26': }
 
-  class { 'ruby::global':
-    version => '2.2.2'
-  }
-
-  ruby_gem { 'bundler for all rubies':
+  ruby_gem { 'bundler for 2.2.2':
     gem          => 'bundler',
-    version      => '~> 1.4.1',
-    ruby_version => '*',
+    version      => '~> 1.10',
+    ruby_version => '2.2.2',
   }
-
-  class { 'nodejs::global': version => 'v0.10.31' }
 
   nodejs::module { 'bower':
-    node_version => 'v1.4.1'
+    node_version => 'v0.10.31'
   }
+
   class { 'osx::dock::icon_size':
     size => 50
   }

@@ -1,12 +1,11 @@
 class people::micalexander {
 
-  homebrew::tap { 'caskroom/versions': }
+  # homebrew::tap { 'caskroom/versions': }
   # homebrew::tap { 'homebrew/dupes': }
   # homebrew::tap { 'homebrew/homebrew-php': }
 
-  include people::micalexander::git
-  include projects::weekly-mysqldumps
   include projects::all
+  include people::micalexander::git
 
   sublime_text::package { 'Package Syncing':
     source => 'csch0/SublimeText-Package-Syncing'

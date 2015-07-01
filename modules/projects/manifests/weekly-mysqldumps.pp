@@ -26,7 +26,6 @@ class projects::weekly-mysqldumps {
 
   exec { 'name':
     command      => "/bin/launchctl load /Users/${::boxen_user}/Library/LaunchAgents/${::boxen_user}.weekly-mysqldumps.plist",
-    #refreshonly => true,
   }
 
 }

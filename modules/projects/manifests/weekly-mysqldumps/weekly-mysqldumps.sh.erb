@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Directory to where database dumps will be stored
+dump_dir="/Users/<%= @boxen_user %>/src/weekly-mysqldumps/dumps/"
+
+# Back up all the mysql databases
+/opt/boxen/homebrew/bin/mysqldump -u root --all-databases --skip-lock-tables > "$dump_dir"<%= @boxen_user %>-$(date +"%Y-%m-%d-%H-%M").sql
+
+# Check to see if there are database dumps newer than a month
+if (( $(stat -f "%m" "$dump_dir") > $(date +%s) - 3600*24*30 )); then
+
+  # If so remove any that are older than  90 days
+  find "$dump_dir"* -mtime +90 -exec rm {} \;
+
+fi

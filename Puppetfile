@@ -61,6 +61,13 @@ github "xquartz",     "1.2.1"
 # Optional/custom modules. There are tons available at
 # https://github.com/boxen.
 
+github "autoconf"
 github "dotfiles",              "1.0.0", :repo => "jamieconnolly/puppet-dotfiles"
+github "libpng"
+github "libtool"
+github "mysql"
+github "php"
+github "pcre"
 github "osx"
 github "sublime_text"
+github "wget"

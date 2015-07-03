@@ -1,4 +1,10 @@
-class projects::nginx-default {
+class projects::nginx-default (
+
+  $phpversion
+
+  ) {
+
+  include nginx::config
 
   file { "${::boxen_home}/config/nginx/sites/default":
     ensure => "file",

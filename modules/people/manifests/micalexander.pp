@@ -1,8 +1,13 @@
 class people::micalexander {
 
   # homebrew::tap { 'caskroom/versions': }
-  # homebrew::tap { 'homebrew/dupes': }
-  # homebrew::tap { 'homebrew/homebrew-php': }
+  homebrew::tap { 'homebrew/dupes': }
+  homebrew::tap { 'homebrew/homebrew-php': }
+
+  # pass the global php version to use
+  class { 'projects::nginx-default':
+    phpversion => '5.5.26'
+  }
 
   include projects::all
   include people::micalexander::git
@@ -10,8 +15,6 @@ class people::micalexander {
   sublime_text::package { 'Package Syncing':
     source => 'csch0/SublimeText-Package-Syncing'
   }
-
-  php::fpm { '5.5.26': }
 
   ruby_gem { 'bundler for 2.2.2':
     gem          => 'bundler',

@@ -74,6 +74,17 @@ node default {
     version => 'v0.10.31'
   }
 
+  # php versions
+  php::version { '5.4': }
+
+  # install and set global php version
+  class { 'php::global':
+    version => '5.5.26'
+  }
+
+  # install php-fpm and configure
+  php::fpm { '5.5.26': }
+
   # default ruby versions
   ruby::version { '1.9.3': }
   ruby::version { '2.0.0': }

@@ -24,8 +24,8 @@ class projects::weekly-mysqldumps {
     target  => "${::boxen_srcdir}/weekly-mysqldumps/${::boxen_user}.weekly-mysqldumps.plist"
   }
 
-  exec { 'name':
-    command      => "/bin/launchctl load /Users/${::boxen_user}/Library/LaunchAgents/${::boxen_user}.weekly-mysqldumps.plist",
+  exec { 'Launch ${::boxen_user}.weekly-mysqldumps.plist':
+    command => "/bin/launchctl load /Users/${::boxen_user}/Library/LaunchAgents/${::boxen_user}.weekly-mysqldumps.plist",
   }
 
 }

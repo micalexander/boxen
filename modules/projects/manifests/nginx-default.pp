@@ -6,9 +6,11 @@ class projects::nginx-default (
 
   include nginx::config
 
-  file { "${::boxen_home}/config/nginx/sites/default":
-    ensure => "file",
+  # overide the creation nginx module nginx.conf with my own thanks to http://serverfault.com/a/439004
+  File <| title == "${::boxen_home}/config/nginx/nginx.conf" |> {
+
     content => template("${::boxen_repodir}/modules/projects/manifests/nginx-default/nginx-default.erb"),
+
   }
 
 }

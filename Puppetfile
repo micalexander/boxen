@@ -62,7 +62,6 @@ github "xquartz",     "1.2.1"
 # https://github.com/boxen.
 
 github "autoconf"
-github "dotfiles",              "1.0.0", :repo => "jamieconnolly/puppet-dotfiles"
 github "libpng"
 github "libtool"
 github "mysql"

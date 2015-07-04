@@ -1,85 +1,33 @@
 ---
 
-dotfiles::symlinks:
-  bash_profile:
-    prefix: bash/
-  git-prompt.sh:
-    prefix: git/
-  git-completion.sh:
-    prefix: git/
+boxen::config::hiera_merge_hierarchy: true
 
-boxen::personal::homebrew_packages:
-  - htop
+boxen::personal::projects:
+  - weekly-mysqldumps
+  - nginx-default
+
+projects::nginx-default::phpversion: 5.5.26
 
 boxen::personal::includes:
-  - osx::dock::icon_size
-  - osx::finder::empty_trash_securely
-  - osx::finder::enable_quicklook_text_selection
-  - osx::finder::unhide_library
-  - osx::finder::show_hidden_files
-  - osx::global::enable_keyboard_control_access
-  - osx::global::tap_to_click
-  - osx::mouse::smart_zoom
-  - osx::mouse::swipe_between_pages
-  - osx::no_network_dsstores
-  - osx::safari::enable_developer_mode
-  - osx::software_update
-  - osx::universal_access::ctrl_mod_zoom
-  - osx::universal_access::enable_scrollwheel_zoom
-
-  - dotfiles
   - mysql
-  - sublime_text
 
 mysql::port: '3306'
 
 boxen::personal::osx_apps:
   - 1password
-  - alfred
   - airparrot
   - airserver
   - bartender
-  - google-chrome
   - dash
   - divvy
-  - dropbox
-  - evernote
-  - flash
-  - firefox
   - geektool
   - hazel
   - hyperdock
-  - imageoptim
-  - iterm2
   - kaleidoscope
-  - keepingyouawake
-  - launchcontrol
-  - linein
   - name-mangler
-  - opera
   - querious
   - rowmote-helper
   - screenflow
-  - silverlight
-  - skype
-  - sonos
-  - spotify
-  - steam
-  - teamviewer
-  - toggldesktop
   - transmit
-  - virtualbox
   - wacom-tablet
   - xscope
-  - xtrafinder
-
-  - qlcolorcode
-  - qlstephen
-  - qlmarkdown
-  - quicklook-json
-  - qlprettypatch
-  - quicklook-csv
-  - betterzipql
-  - qlimagesize
-  - webpquicklook
-  - suspicious-package

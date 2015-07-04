@@ -52,12 +52,11 @@ Service {
 Homebrew::Formula <| |> -> Package <| |>
 
 node default {
-  # core modules, needed for most things
-  include dnsmasq
-  include git
-  include hub
-  include nginx
 
+  homebrew::tap { 'homebrew/dupes': }
+  homebrew::tap { 'homebrew/homebrew-php': }
+  homebrew::tap { 'caskroom/versions': }
+  homebrew::tap { 'caskroom/fonts': }
 
   # fail if FDE is not enabled
   #if $::root_encrypted == 'no' {
@@ -71,7 +70,7 @@ node default {
 
   # install and set global node version
   class { 'nodejs::global':
-    version => 'v0.10.31'
+    version => 'v0.12.6'
   }
 
   # php versions
@@ -98,13 +97,13 @@ node default {
   }
 
   # common, useful packages
-  package {
-    [
-      'ack',
-      'findutils',
-      'gnu-tar'
-    ]:
-  }
+  # package {
+  #   [
+  #     'ack',
+  #     'findutils',
+  #     'gnu-tar'
+  #   ]:
+  # }
 
   file { "${boxen::config::srcdir}/boxen":
     ensure => link,

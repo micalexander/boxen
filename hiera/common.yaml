@@ -1,23 +1,71 @@
 ---
-# This is an example of the kinds of things that you can configure via hiera.
-# If you've left the defaults in `/hiera.yml`, you might want to copy this file
-# to `hiera/common.yaml`, or feel free to start with a blank slate!
 
-# Have a gander at some of these examples to get an idea of some of the things
-# that you can affect 'out of the box', and then customise to your
-# heart's content.
+homebrew::tap:
+  - 'homebrew/dupes'
+  - 'homebrew/homebrew-php'
+  - 'caskroom/versions'
+  - 'caskroom/fonts'
 
-# See https://github.com/boxen/puppet-ruby for docs
-# ruby::global::version: "2.1.0"
-# ruby::rbenv_plugins:
-#   rbenv-vars:
-#     ensure: v1.0.0
-#     source: sstephenson/rbenv-vars
-#   ruby-build:
-#     ensure: v20131225.1
-#     source: sstephenson/ruby-build
-# ruby::version::alias:
-#   2.0.0: 2.0.0-p353
+boxen::personal::homebrew_packages:
+  - htop
+  - mackup
+  - ack
+  - findutils
+  - gnu-tar
 
-# See https://github.com/boxen/puppet-java for docs
-# java::update_version: 51
+boxen::personal::includes:
+  - osx::dock::icon_size
+  - osx::finder::empty_trash_securely
+  - osx::finder::enable_quicklook_text_selection
+  - osx::finder::unhide_library
+  - osx::finder::show_hidden_files
+  - osx::global::enable_keyboard_control_access
+  - osx::global::tap_to_click
+  - osx::mouse::smart_zoom
+  - osx::mouse::swipe_between_pages
+  - osx::no_network_dsstores
+  - osx::safari::enable_developer_mode
+  - osx::software_update
+  - osx::universal_access::ctrl_mod_zoom
+  - osx::universal_access::enable_scrollwheel_zoom
+
+  - dnsmasq
+  - git
+  - hub
+  - nginx
+
+osx::dock::icon_size::size: 50
+osx::mouse::smart_zoom::enabled: true
+
+boxen::personal::osx_apps:
+  - alfred
+  - google-chrome
+  - google-drive
+  - dropbox
+  - evernote
+  - flash
+  - firefox
+  - imageoptim
+  - iterm2
+  - keepingyouawake
+  - launchcontrol
+  - licecap
+  - linein
+  - opera
+  - silverlight
+  - skype
+  - sonos
+  - spotify
+  - sublime-text-dev
+  - teamviewer
+  - toggldesktop
+  - virtualbox
+  - xtrafinder
+
+  - qlcolorcode
+  - qlstephen
+  - qlmarkdown
+  - quicklook-json
+  - qlprettypatch
+  - quicklook-csv
+  - betterzipql

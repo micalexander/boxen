@@ -1,0 +1,16 @@
+---
+
+boxen::config::hiera_merge_hierarchy: true
+
+boxen::personal::osx_apps:
+  - 1password
+  - airparrot
+  - bartender
+  - dash
+  - divvy
+  - hazel
+  - hyperdock
+  - kaleidoscope
+  - name-mangler
+  - rowmote-helper
+  - xscope

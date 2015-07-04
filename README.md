@@ -50,6 +50,13 @@ Otherwise, follow instructions below.
 1. Open the Preferences window (`Cmd-,`).
 1. Go to the Downloads tab.
 1. Install the Command Line Tools.
+1. Verify that Command Line Tools installed by running `xcode-select --install`
+
+***I found that after installing the Xcode from the Mac App Store the Command Line Tools were available for download from the Downloads tab in Xcode. This produce a ```No receipt for 'com.apple.pkg.CLTools_Executables' found at '/'.``` error when running boxen. I was able to fix this by running the following command in the terminal to install the Command Line Tools manually.***
+
+```
+xcode-select --install
+```
 
 ### Bootstrapping
 

@@ -1,5 +1,0 @@
-class people::micalexander::git {
-
-
-
-}

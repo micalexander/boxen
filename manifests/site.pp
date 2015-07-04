@@ -58,15 +58,15 @@ node default {
   homebrew::tap { 'caskroom/versions': }
   homebrew::tap { 'caskroom/fonts': }
 
-  # fail if FDE is not enabled
-  #if $::root_encrypted == 'no' {
-    #fail('Please enable full disk encryption and try again')
-  #}
-
   # node versions
   nodejs::version { 'v0.6': }
   nodejs::version { 'v0.8': }
   nodejs::version { 'v0.10': }
+
+
+  nodejs::module { 'bower':
+    node_version => 'v0.10.31'
+  }
 
   # install and set global node version
   class { 'nodejs::global':
@@ -96,17 +96,20 @@ node default {
     version => '2.2.2'
   }
 
-  # common, useful packages
-  # package {
-  #   [
-  #     'ack',
-  #     'findutils',
-  #     'gnu-tar'
-  #   ]:
-  # }
+  ruby_gem { 'bundler for 2.2.2':
+    gem          => 'bundler',
+    version      => '~> 1.10',
+    ruby_version => '2.2.2',
+  }
 
   file { "${boxen::config::srcdir}/boxen":
     ensure => link,
     target => $boxen::config::repodir
   }
+
+  # fail if FDE is not enabled
+  #if $::root_encrypted == 'no' {
+    #fail('Please enable full disk encryption and try again')
+  #}
+
 }

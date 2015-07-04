@@ -5,8 +5,8 @@ per-user configurations, allowing individuals to override many, many
 common puppet parameters for their own machines.
 
 Simply place a file in this directory named after your github
-login. For example, if your github login is `johndoe`, you would edit
-the file `johndoe.yaml` here.
+login. For example, if your github login is `micalexander`, you would edit
+the file `micalexander.yaml` here.
 
 ## Example
 

@@ -3,7 +3,7 @@
 boxen::config::hiera_merge_hierarchy: true
 
 boxen::personal::projects:
-  - weekly-mysqldumps
+  - mysqldump-all
   - nginx-default
 
 projects::nginx-default::phpversion: 5.5.26

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory to where database dumps will be stored
-dump_dir="/Users/<%= @boxen_user %>/src/weekly-mysqldumps/dumps/"
+dump_dir="<%= @boxen_srcdir %>/mysql/dumps/"
 
 # Back up all the mysql databases
 /opt/boxen/homebrew/bin/mysqldump -u root --all-databases --skip-lock-tables > "$dump_dir"<%= @boxen_user %>-$(date +"%Y-%m-%d-%H-%M").sql

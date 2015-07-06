@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
         <key>Label</key>
-        <string><%= @boxen_user %>.weekly-mysqldumps</string>
+        <string><%= @boxen_user %>.mysqldump-all</string>
         <key>Program</key>
-        <string><%= @boxen_srcdir %>/weekly-mysqldumps/bin/weekly-mysqldumps.sh</string>
+        <string><%= @boxen_srcdir %>/mysql/bin/mysqldump-all.sh</string>
         <key>StandardErrorPath</key>
-        <string>/tmp/<%= @boxen_user %>.weekly-mysqldumps.stderr</string>
+        <string>/tmp/<%= @boxen_user %>.mysqldump-all.stderr</string>
         <key>StandardOutPath</key>
-        <string>/tmp/<%= @boxen_user %>.weekly-mysqldumps.stdout</string>
+        <string>/tmp/<%= @boxen_user %>.mysqldump-all.stdout</string>
         <key>StartCalendarInterval</key>
         <dict>
                 <key>Hour</key>

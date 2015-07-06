@@ -13,4 +13,18 @@ class projects::nginx-default (
 
   }
 
+  file {
+    [
+      "${::boxen_srcdir}/nginx",
+      "${::boxen_srcdir}/nginx/sites",
+    ]:
+      ensure => "directory",
+  }
+
+  File <| title == "${::boxen_home}/config/nginx/sites" |> {
+    ensure => "link",
+    target => "${::boxen_srcdir}/nginx/sites",
+    force  => true,
+  }
+
 }

@@ -1,11 +1,5 @@
 ---
 
-homebrew::tap:
-  - 'homebrew/dupes'
-  - 'homebrew/homebrew-php'
-  - 'caskroom/versions'
-  - 'caskroom/fonts'
-
 boxen::personal::homebrew_packages:
   - htop
   - mackup
@@ -49,6 +43,7 @@ boxen::personal::osx_apps:
   - iterm2
   - keepingyouawake
   - launchcontrol
+  - launchrocket
   - licecap
   - linein
   - opera

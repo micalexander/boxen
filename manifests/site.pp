@@ -53,10 +53,11 @@ Homebrew::Formula <| |> -> Package <| |>
 
 node default {
 
-  homebrew::tap { 'homebrew/dupes': }
-  homebrew::tap { 'homebrew/homebrew-php': }
   homebrew::tap { 'caskroom/versions': }
   homebrew::tap { 'caskroom/fonts': }
+  homebrew::tap { 'homebrew/dupes': }
+  homebrew::tap { 'homebrew/homebrew-php': }
+  homebrew::tap { 'homebrew/services': }
 
   # node versions
   nodejs::version { 'v0.6': }

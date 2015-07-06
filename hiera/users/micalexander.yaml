@@ -8,11 +8,6 @@ boxen::personal::projects:
 
 projects::nginx-default::phpversion: 5.5.26
 
-boxen::personal::includes:
-  - mysql
-
-mysql::port: '3306'
-
 boxen::personal::osx_apps:
   - 1password
   - airparrot

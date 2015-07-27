@@ -19,6 +19,11 @@ GITHUBTARBALL
     dnsmasq (2.0.1)
 
 GITHUBTARBALL
+  remote: boxen/puppet-docker
+  specs:
+    docker (0.9.0)
+
+GITHUBTARBALL
   remote: boxen/puppet-foreman
   specs:
     foreman (1.2.0)
@@ -91,7 +96,7 @@ GITHUBTARBALL
 GITHUBTARBALL
   remote: boxen/puppet-phantomjs
   specs:
-    phantomjs (2.4.0)
+    phantomjs (3.0.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-php
@@ -114,14 +119,14 @@ GITHUBTARBALL
     ruby (8.5.2)
 
 GITHUBTARBALL
-  remote: boxen/puppet-sublime_text
-  specs:
-    sublime_text (1.1.0)
-
-GITHUBTARBALL
   remote: boxen/puppet-sudo
   specs:
     sudo (1.0.0)
+
+GITHUBTARBALL
+  remote: boxen/puppet-vagrant
+  specs:
+    vagrant (3.3.0)
 
 GITHUBTARBALL
   remote: boxen/puppet-wget
@@ -153,6 +158,7 @@ DEPENDENCIES
   boxen (= 3.11.0)
   brewcask (= 0.0.6)
   dnsmasq (= 2.0.1)
+  docker (>= 0)
   foreman (= 1.2.0)
   gcc (= 2.2.1)
   git (= 2.7.92)
@@ -169,14 +175,14 @@ DEPENDENCIES
   openssl (= 1.0.0)
   osx (>= 0)
   pcre (>= 0)
-  phantomjs (= 2.4.0)
+  phantomjs (= 3.0.0)
   php (>= 0)
   pkgconfig (= 1.0.0)
   repository (= 2.4.1)
   ruby (= 8.5.2)
   stdlib (= 4.2.1)
-  sublime_text (>= 0)
   sudo (= 1.0.0)
+  vagrant (>= 0)
   wget (>= 0)
   xquartz (= 1.2.1)
 

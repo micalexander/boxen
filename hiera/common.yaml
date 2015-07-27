@@ -3,9 +3,6 @@
 boxen::personal::homebrew_packages:
   - htop
   - mackup
-  - ack
-  - findutils
-  - gnu-tar
 
 boxen::personal::includes:
   - osx::dock::icon_size
@@ -26,10 +23,6 @@ boxen::personal::includes:
   - dnsmasq
   - git
   - hub
-  - mysql
-  - nginx
-
-mysql::port: '3306'
 
 osx::dock::icon_size::size: 50
 osx::mouse::smart_zoom::enabled: true
